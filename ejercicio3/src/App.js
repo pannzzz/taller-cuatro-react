@@ -1,25 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import Formulario from './Formulario';
+import Resultado from './Resultado';
 
-function App() {
+const App = () => {
+  const [numero, setNumero] = useState('');
+
+  const manejarCambioNumero = (nuevoNumero) => {
+    setNumero(nuevoNumero);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="d-flex flex-column align-items-center justify-content-center vh-100">
+      <h1 className="text-center mb-4">Ejercicio 3 Lifting State Up</h1>
+
+      <Formulario numero={numero} onNumeroChange={manejarCambioNumero} />
+
+      <Resultado numero={numero} />
     </div>
   );
-}
+};
 
 export default App;
